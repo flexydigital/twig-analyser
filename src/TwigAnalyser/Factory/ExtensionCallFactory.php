@@ -2,22 +2,22 @@
 
 namespace TwigAnalyser\Factory;
 
-use TwigAnalyser\Dto\ExtensionCallDto;
+use TwigAnalyser\Extension\ExtensionCall;
 
 /**
- * @package TwigAnalyser
+ * @package TwigAnalyser\Factory
  */
-class ExtensionCallDtoFactory
+class ExtensionCallFactory
 {
 
     /**
      * @param $extension
      * @param array $parameters
-     * @return ExtensionCallDto
+     * @return ExtensionCall
      */
     public function create($extension, array $parameters)
     {
-        $dto = new ExtensionCallDto();
+        $dto = new ExtensionCall();
         $dto->extension = $extension;
         $dto->parameters = $parameters;
         return $dto;
@@ -27,7 +27,7 @@ class ExtensionCallDtoFactory
      *
      * @param $extension
      * @param \Twig_Token[] $tokens
-     * @return ExtensionCallDto[]
+     * @return ExtensionCall[]
      */
     public function createByTokens($extension, array $tokens)
     {

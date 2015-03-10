@@ -1,11 +1,11 @@
 <?php
 
-namespace TwigAnalyser\Dto;
+namespace TwigAnalyser\Dependency;
 
 /**
- * @package TwigAnalyser\Dto
+ * @package TwigAnalyser\Dependency
  */
-class InterrelationRelationDto
+class Dependency
 {
 
     /**

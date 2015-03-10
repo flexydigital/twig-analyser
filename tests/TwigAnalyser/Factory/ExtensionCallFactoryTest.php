@@ -2,22 +2,22 @@
 
 namespace TwigAnalyser;
 
-use TwigAnalyser\Factory\ExtensionCallDtoFactory;
+use TwigAnalyser\Factory\ExtensionCallFactory;
 
 /**
  * @package Flexy\Ftwo\Bundle\CommonBundle\Service\Template
  */
-class ExtensionCallDtoFactoryTest extends \PHPUnit_Framework_TestCase
+class ExtensionCallFactoryTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var ExtensionCallDtoFactory
+     * @var ExtensionCallFactory
      */
     private $factory;
 
 
     public function setUp()
     {
-        $this->factory = new ExtensionCallDtoFactory();
+        $this->factory = new ExtensionCallFactory();
     }
 
     public function testCreate()

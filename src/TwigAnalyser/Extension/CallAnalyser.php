@@ -1,16 +1,16 @@
 <?php
 
-namespace TwigAnalyser;
+namespace TwigAnalyser\Extension;
 
 use TwigAnalyser\Exception\InvalidContentException;
 use TwigAnalyser\Exception\InvalidSyntaxException;
-use TwigAnalyser\Factory\ExtensionCallDtoFactory;
+use TwigAnalyser\Factory\ExtensionCallFactory;
 use TwigAnalyser\Token\Tokenizer;
 
 /**
  * @package TwigAnalyser
  */
-class ExtensionCallFinder
+class CallFinder
 {
 
     /**
@@ -19,20 +19,20 @@ class ExtensionCallFinder
     private $tokenizer;
 
     /**
-     * @var ExtensionCallDtoFactory
+     * @var ExtensionCallFactory
      */
-    private $callDtoFactory;
+    private $callFactory;
 
     /**
      * @param Tokenizer $tokenizer
-     * @param ExtensionCallDtoFactory $callDtoFactory
+     * @param ExtensionCallFactory $callFactory
      */
     public function __construct(
         Tokenizer $tokenizer,
-        ExtensionCallDtoFactory $callDtoFactory
+        ExtensionCallFactory $callFactory
     ) {
         $this->tokenizer = $tokenizer;
-        $this->callDtoFactory = $callDtoFactory;
+        $this->callFactory = $callFactory;
     }
 
     /**
@@ -50,6 +50,6 @@ class ExtensionCallFinder
             $tokens = [];
         }
 
-        return $this->callDtoFactory->createByTokens($extensionName, $tokens);
+        return $this->callFactory->createByTokens($extensionName, $tokens);
     }
 }

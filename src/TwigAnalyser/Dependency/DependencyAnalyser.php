@@ -1,16 +1,16 @@
 <?php
 
-namespace TwigAnalyser;
+namespace TwigAnalyser\Dependency;
 
-use TwigAnalyser\Dto\InterrelationRelationDto;
 use TwigAnalyser\Exception\InvalidContentException;
 use TwigAnalyser\Exception\InvalidSyntaxException;
+use TwigAnalyser\Factory\DependencyFactory;
 use TwigAnalyser\Token\Tokenizer;
 
 /**
- * @package TwigAnalyser
+ * @package TwigAnalyser\Dependency
  */
-class InterrelationFinder
+class DependencyAnalyser
 {
     const INCLUDE_TYPE = "include";
     const EXTEND_TYPE = "extend";
@@ -21,25 +21,25 @@ class InterrelationFinder
     private $tokenizer;
 
     /**
-     * @var TemplateRelationDtoFactory
+     * @var DependencyFactory
      */
-    private $relationDtoFactory;
+    private $dependencyFactory;
 
     /**
      * @param Tokenizer $tokenizer
-     * @param TemplateRelationDtoFactory $relationDtoFactory
+     * @param Dependency $dependencyFactory
      */
     public function __construct(
         Tokenizer $tokenizer,
-        TemplateRelationDtoFactory $relationDtoFactory
+        Dependency $dependencyFactory
     ) {
         $this->tokenizer = $tokenizer;
-        $this->relationDtoFactory = $relationDtoFactory;
+        $this->dependencyFactory = $dependencyFactory;
     }
 
     /**
      * @param $content
-     * @return InterrelationRelationDto[]
+     * @return Dependency[]
      */
     public function findInContent($content)
     {
@@ -59,10 +59,10 @@ class InterrelationFinder
             if ($token->getType() == \Twig_Token::NAME_TYPE) {
                 switch($token->getValue()) {
                     case 'include':
-                        $relations[] = $this->relationDtoFactory->create($tokens[$i+1]->getValue(), self::INCLUDE_TYPE);
+                        $relations[] = $this->dependencyFactory->create($tokens[$i+1]->getValue(), self::INCLUDE_TYPE);
                         break;
                     case 'extends':
-                        $relations[] = $this->relationDtoFactory->create($tokens[$i+1]->getValue(), self::EXTEND_TYPE);
+                        $relations[] = $this->dependencyFactory->create($tokens[$i+1]->getValue(), self::EXTEND_TYPE);
                         break;
                     default:
                         break;

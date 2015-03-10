@@ -1,11 +1,11 @@
 <?php
 
-namespace TwigAnalyser\Dto;
+namespace TwigAnalyser\Extension;
 
 /**
- * @package TwigAnalyser\Dto
+ * @package TwigAnalyser\Extension
  */
-class ExtensionCallDto
+class ExtensionCall
 {
 
     /**
