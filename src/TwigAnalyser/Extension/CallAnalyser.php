@@ -8,9 +8,9 @@ use TwigAnalyser\Factory\ExtensionCallFactory;
 use TwigAnalyser\Token\Tokenizer;
 
 /**
- * @package TwigAnalyser
+ * @package TwigAnalyser\Extension
  */
-class CallFinder
+class CallAnalyser
 {
 
     /**
