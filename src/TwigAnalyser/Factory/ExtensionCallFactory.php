@@ -59,10 +59,10 @@ class ExtensionCallFactory
 
             if (($isCall = $this->isTwigExtensionCall($i, $tokens)) || $token->getValue() == '[') {
                 $callTokens = $this->getTokenGroup($i, $tokens, $isCall ? '(' : '[', $isCall ? ')' : ']');
-                $group = $this->nestleTokenGroup(array_splice($callTokens, 1, -1));
-                $values[] = $isCall ? [$token->getValue() => $group] : $group;
+                $tokenGroup = $this->nestleTokenGroup(array_splice($callTokens, 1, -1));
+                $values[] = $isCall ? [$token->getValue() => $tokenGroup] : $tokenGroup;
 
-                array_splice($tokens, $i, count($callTokens));
+                array_splice($tokens, $i, count($tokens) - count($callTokens));
                 continue;
             }
 
