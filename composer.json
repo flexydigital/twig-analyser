@@ -1,6 +1,6 @@
 {
     "name": "jeangnc/twig-analyser",
-    "version": "1.0.5",
+    "version": "dev",
     "minimum-stability": "dev",
     "authors": [
         {
@@ -10,7 +10,7 @@
     ],
     "require": {
         "php": ">=5.5.0",
-        "twig/extensions": ">=1.21.0"
+        "twig/extensions": ">=1.0.0"
     },
     "require-dev": {
         "phpunit/phpunit": "4.3.*@dev",
