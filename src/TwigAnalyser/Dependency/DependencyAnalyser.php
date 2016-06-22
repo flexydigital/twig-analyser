@@ -13,7 +13,7 @@ use TwigAnalyser\Token\Tokenizer;
 class DependencyAnalyser
 {
     const INCLUDE_TYPE = "include";
-    const EXTEND_TYPE = "extend";
+    const EXTEND_TYPE = "extends";
 
     /**
      * @var Tokenizer
@@ -57,9 +57,10 @@ class DependencyAnalyser
             $token = $tokens[$i];
 
             if ($token->getType() == \Twig_Token::NAME_TYPE) {
+
                 if ($token->getValue() == self::INCLUDE_TYPE || $token->getValue() == self::EXTEND_TYPE) {
                     $path = $tokens[$i+1]->getValue();
-                    
+
                     if ($this->hasDependencyWith($relations, $path)) {
                         continue;
                     }
