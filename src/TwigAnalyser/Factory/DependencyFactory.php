@@ -18,7 +18,7 @@ class DependencyFactory
     public function create($path, $type)
     {
         $dto = new Dependency();
-        $dto->path = strtr($path, ['/' => '-']);
+        $dto->path = $path;
         $dto->type = $type;
 
         return $dto;

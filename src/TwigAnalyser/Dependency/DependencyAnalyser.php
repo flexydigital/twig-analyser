@@ -57,19 +57,34 @@ class DependencyAnalyser
             $token = $tokens[$i];
 
             if ($token->getType() == \Twig_Token::NAME_TYPE) {
-                switch($token->getValue()) {
-                    case 'include':
-                        $relations[] = $this->dependencyFactory->create($tokens[$i+1]->getValue(), self::INCLUDE_TYPE);
-                        break;
-                    case 'extends':
-                        $relations[] = $this->dependencyFactory->create($tokens[$i+1]->getValue(), self::EXTEND_TYPE);
-                        break;
-                    default:
-                        break;
+                if ($token->getValue() == self::INCLUDE_TYPE || $token->getValue() == self::EXTEND_TYPE) {
+                    $path = $tokens[$i+1]->getValue();
+                    
+                    if ($this->hasDependencyWith($relations, $path)) {
+                        continue;
+                    }
+                    
+                    $relations[] = $this->dependencyFactory->create($path, $token->getValue());
                 }
             }
         }
 
         return $relations;
+    }
+
+    /**
+     * @param Dependency[] $relations
+     * @param $path
+     * @return bool
+     */
+    private function hasDependencyWith(array $relations, $path)
+    {
+        foreach ($relations as $relation) {
+            if ($relation->path == $path) {
+                return true;
+            }
+        }
+        
+        return false;
     }
 }
