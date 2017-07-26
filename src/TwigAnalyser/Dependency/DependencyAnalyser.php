@@ -27,11 +27,11 @@ class DependencyAnalyser
 
     /**
      * @param Tokenizer $tokenizer
-     * @param Dependency $dependencyFactory
+     * @param DependencyFactory $dependencyFactory
      */
     public function __construct(
         Tokenizer $tokenizer,
-        Dependency $dependencyFactory
+        DependencyFactory $dependencyFactory
     ) {
         $this->tokenizer = $tokenizer;
         $this->dependencyFactory = $dependencyFactory;
@@ -73,3 +73,4 @@ class DependencyAnalyser
         return $relations;
     }
 }
+
