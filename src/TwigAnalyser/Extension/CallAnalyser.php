@@ -10,7 +10,7 @@ use TwigAnalyser\Token\Tokenizer;
 /**
  * @package TwigAnalyser
  */
-class CallFinder
+class CallAnalyser
 {
 
     /**
