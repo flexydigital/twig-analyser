@@ -1,6 +1,7 @@
 {
     "name": "flexydigital/twig-analyser",
     "version": "1.0.0",
+    "license": "MIT",
     "authors": [
         {
             "name": "Jean Carlos Gonçalves",
